@@ -3,14 +3,70 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
+
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-    <hl>Pagina Inicial</hl>
-    <p>Esta es la primera pag del curso WEB</p>
-    </body>
+<head>
+    <title>Tienda de Videojuegos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            position: relative;  
+        }
+        h1 {
+            color: darkgreen;
+        }
+        h2 {
+            color: darkblue;
+        }
+        p {
+            color: darkgrey;
+        }
+        h3 {
+          font-family: "Arial", sans-serif;
+          color: #0048FF;
+          text-align: center;
+          font-size: 36px;
+          margin-top: 50px;  
+        }
+        
+        
+        #reproductor-audio {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a nuestra Tienda de Videojuegos</h1>
+    <img src="https://img.freepik.com/vector-gratis/tiempo-juegos-texto-neon-gamepad_1262-15457.jpg" alt="Banner">
+
+    <h2>Los más populares</h2>
+    <p>En nuestra tienda, siempre nos aseguramos de tener los videojuegos más populares y solicitados. Si buscas lo último en juegos de consolas, lo tenemos aquí.</p>
+
+    <h2>Nuestros Clásicos</h2>
+    <p>También nos encanta la nostalgia. Tenemos una selección increíble de juegos clásicos que te transportarán a los buenos tiempos.</p>
+
+    <h2>Accesorios y Más</h2>
+    <p>No sólo vendemos videojuegos. También tenemos todo tipo de accesorios para mejorar tu experiencia de juego, desde controles, hasta audífonos y más.</p>
+
+    <h3>Descubre la Épica Aventura de Zelda: Tears of the Kingdom en Exclusiva</h3>
+
+    <center>
+        <video width="1280" height="720" controls>
+            <source src="videos/y2mate.com - Cucuí Ganon Rosario  Dale Zelda Dale Toño Rosario Cover_v144P.mp4" type="video/mp4">
+            Tu navegador no soporta <code>video</code> tag.
+        </video>
+    </center> 
+
+    <audio id="audio" controls>
+        <source src="audios/y2mate.com - La Reina de Link  Ganon Rosario fishurín Lynn.mp3" type="audio/mpeg">
+        Tu navegador no soporta <code>audio</code> tag.
+    </audio>
+
+</body>
 </html>
+
+
