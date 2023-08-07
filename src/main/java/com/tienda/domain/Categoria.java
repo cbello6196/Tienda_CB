@@ -22,7 +22,7 @@ public class Categoria implements Serializable {
 
     @OneToMany//Relacion de uno a muchos
     @JoinColumn(name = "id_categoria")
-    List<Producto> productos;
+    private List<Producto> productos;
 
     public Categoria() {
     }

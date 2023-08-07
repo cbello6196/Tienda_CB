@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
 @Controller
 @Slf4j
 @RequestMapping("/categoria")//busca esta ruta
 public class CategoriaController {
-
-    @Autowired
+    
+ @Autowired
     private CategoriaService categoriaService;
 
     @GetMapping("/listado")//busca esta ruta se trae informacion 
