@@ -1,6 +1,6 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
     <head th:fragment="head">
         <title>Tienda</title>
@@ -15,27 +15,28 @@
     <body>
 
         <header th:fragment="header" class="header">
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
-                <div class="container">
-                    <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
-                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <ul class="navbar-nav">
+    <nav class="navbar navbar-expand-sm navbar-success bg-success p-0">
+        <div class="container">
+            <a th:href="@{/}" class="navbar-brandse" style="color: white;"><i class="fas fa-shopping-cart" style="color: white;"></i> [[#{aplicacion.titulo}]]</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <ul class="navbar-nav"sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_VENDEDOR')">
                             <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
-                             <li class="nav-item dropdown">
+                            <li class="nav-item dropdown"sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a class="nav-link dropdown-toggle" 
                                    data-bs-toggle="dropdown" 
                                    href="#" 
                                    role="button" 
                                    aria-expanded="false">[[#{plantilla.pruebas}]]</a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
+                                <ul class="dropdown-menu dropdown-menu-success">
                                     <li><a class="dropdown-item"  th:href="@{/pruebas/listado}">[[#{plantilla.asociaciones}]]</a></li>
+                                    <li><a class="dropdown-item"  th:href="@{/pruebas/listado2}">[[#{plantilla.consultas}]]</a></li>
+                                    <li><a class="dropdown-item"  th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>
                                 </ul>
                             </li>
-
                         </ul>
                         <div class="col-md-3">
                             <ul class="navbar-nav">                                
@@ -43,22 +44,39 @@
                                 <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=en)}">EN</a></li>
                             </ul>
                         </div>
+                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}"><i class= "fas fa-sign-in-alt"></i></a> 
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                            <li class="nav-item text-success my-auto">
+                                <i class="fas fa-users"></i>
+                                <span sec:authentication="name">Bob</span>
+                            </li>
+                            <li class="nav-item my-auto">
+                                <form method="post" th:action="@{/logout}">
+                                    <button class="btn btn-success">
+                                        <li class="fas fa-sign-out-alt"></li>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+
             </nav>
-            <section id="main-header" class="py-2 bg-success text-white">
-                <div class="container">
+            <section id="main-header" class="py-4 bg-warning text-center" style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                <div class="container" style="max-width: 600px;">
                     <div class="row">
-                        <div class="col-md-6">
-                            <h1><i class="fas fa-cog"></i> [[#{plantilla.suTienda}]]</h1>
+                        <div class="col-md-12">
+                            <h1 style="margin: 0 auto; color: white;"><i class="fas fa-shopping-cart" style="margin-right: 10px;"></i> [[#{plantilla.suTienda}]]</h1>
                         </div>
                     </div>
                 </div>
             </section>
         </header>
-
-
-        <footer th:fragment="footer" claas="bg-info text-white mt-5 p-2">
+        <footer th:fragment="footer" class="bg-secondary text-white mt-5 p-2"> 
             <div class="container">
                 <div class="col">
                     <p class="lead text-center">
@@ -69,4 +87,3 @@
         </footer>               
     </body>
 </html>
-
